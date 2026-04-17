@@ -66,11 +66,7 @@ course_info = df[
 
 st.subheader("Course Details")
 
-st.write(f"Course Name: {course_info['course_name']}")
-st.write(f"Difficulty: {course_info['difficulty_level']}")
-st.write(f"Rating: {course_info['rating']}")
-st.write(f"Price: {course_info['course_price']}")
-
+    st.write(f"{column.replaced('_','').title()}: {course_info[column]}")
 
 # Strategy selector
 st.subheader("Choose recommendation strategy")
