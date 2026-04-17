@@ -64,9 +64,11 @@ course_info = df[
     df["course_name"] == selected_course
 ].iloc[0]
 
+
 st.subheader("Course Details")
 
-    st.write(f"{column.replaced('_','').title()}: {course_info[column]}")
+for column in course_info.index:
+    st.write(f"{column.replace('_',' ').title()}: {course_info[column]}")
 
 # Strategy selector
 st.subheader("Choose recommendation strategy")
