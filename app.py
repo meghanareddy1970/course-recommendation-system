@@ -11,6 +11,7 @@ course_similarity_df = pickle.load(open("course_similarity.pkl", "rb"))
 
 # Page title
 st.title("Online Course Recommendation System")
+st.write("Hybrid recommendation engine using collaborative + content filtering")
 
 
 # Trending Courses section
@@ -50,11 +51,11 @@ st.dataframe(
 
 
 # Recommend Similar Courses section
-st.subheader("Recommend Similar Courses")
+st.subheader("Course Recommendation Engine")
 
 selected_course = st.selectbox(
-    "Select a course",
-    df["course_name"].unique()
+    "Search and select a course",
+    sorted(df["course_name"].unique())
 )
 
 
@@ -72,13 +73,17 @@ st.write(f"Price: {course_info['course_price']}")
 
 
 # Strategy selector
+st.subheader("Choose recommendation strategy")
+
+st.markdown("""
+**Similar Courses** → Hybrid similarity recommendation  
+**Top Rated Alternatives** → Highest-rated substitutes  
+**Budget Friendly Alternatives** → Lowest-price substitutes
+""")
+
 recommendation_type = st.radio(
-    "Choose recommendation strategy",
-    [
-        "Similar Courses",
-        "Top Rated Alternatives",
-        "Budget Friendly Alternatives"
-    ]
+    "",
+    ("Similar Courses", "Top Rated Alternatives", "Budget Friendly Alternatives")
 )
 
 
@@ -141,6 +146,8 @@ if st.button("Recommend Courses"):
 
     # DISPLAY RESULTS
     st.write("Top Recommended Courses:")
+
+    recommended_courses = recommended_courses.drop_duplicates("course_name")
 
     if recommendation_type == "Similar Courses":
 
