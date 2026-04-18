@@ -28,6 +28,19 @@ st.dataframe(
     ].head(5)
 )
 
+st.subheader("Rating Distribution")
+
+rating_counts = df["rating"].round(1).value_counts().sort_index()
+
+st.bar_chart(rating_counts)
+
+difficulty_counts = df["difficulty_level"].value_counts()
+
+st.subheader("Course Difficulty Distribution")
+
+st.bar_chart(difficulty_counts)
+
+
 
 # Filter by difficulty level
 st.subheader("Filter Courses by Difficulty")
@@ -46,7 +59,8 @@ filtered_courses = filtered_courses.drop_duplicates("course_name")
 st.dataframe(
     filtered_courses[
         ["course_name", "rating", "course_price"]
-    ].head(5)
+    ],
+    height=300
 )
 
 
@@ -55,7 +69,7 @@ st.subheader("Course Recommendation Engine")
 
 selected_course = st.selectbox(
     "Search and select a course",
-    sorted(df["course_name"].unique())
+    filtered_courses["course_name"].unique()
 )
 
 
@@ -168,4 +182,14 @@ if st.button("Recommend Courses"):
                  "rating",
                  "course_price"]
             ]
+        )
+
+        # Footer
+        st.markdown(
+            """
+            <div style="position: fixed; bottom: 10px; right: 20px; font-size: 14px; color: green;">
+                    Developed by Meghana
+            </div>
+            """,
+            unsafe_allow_html=True
         )
