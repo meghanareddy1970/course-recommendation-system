@@ -177,7 +177,6 @@ if st.button("Recommend Courses"):
         )
 
     else:
-
         st.dataframe(
             recommended_courses[
                 ["course_name",
@@ -187,21 +186,19 @@ if st.button("Recommend Courses"):
             ]
         )
 
-        st.markdown(
-    """
+        
+    st.markdown("""
     <style>
     .footer {
-        position: fixed;
-        bottom: 10px;
-        right: 20px;
-        color: green;
-        font-size: 14px;
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    color: green;
+    font-size: 14px;
     }
     </style>
 
     <div class="footer">
-        Developed by Meghana
+    Developed by Meghana
     </div>
-    """,
-    unsafe_allow_html=True
-)
+    """, unsafe_allow_html=True)
