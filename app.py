@@ -165,18 +165,17 @@ if st.button("Recommend Courses"):
     recommended_courses = recommended_courses.drop_duplicates("course_name")
 
     if recommendation_type == "Similar Courses":
+    st.dataframe(
+        recommended_courses[
+            ["course_name",
+             "difficulty_level",
+             "rating",
+             "course_price",
+             "similarity_score"]
+        ]
+    )
 
-        st.dataframe(
-            recommended_courses[
-                ["course_name",
-                 "difficulty_level",
-                 "rating",
-                 "course_price",
-                 "similarity_score"]
-            ]
-        )
-
-    else:
+else:
     st.dataframe(
         recommended_courses[
             ["course_name",
