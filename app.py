@@ -69,14 +69,7 @@ st.dataframe(
 # Recommend Similar Courses section
 st.subheader("Course Recommendation Engine")
 
-difficulty_selected = st.selectbox(
-    "Select Difficulty Level",
-    df["difficulty_level"].unique()
-)
 
-filtered_courses = df[
-    df["difficulty_level"] == difficulty_selected
-]
 
 selected_course = st.selectbox(
     "Search and select a course",
@@ -85,9 +78,9 @@ selected_course = st.selectbox(
 
 
 # Show course details
-course_info = df[
-    df["course_name"] == selected_course
-].iloc[0]
+course_info = filtered_courses[
+    filtered_courses["course_name"] == selected_course
+]
 
 
 st.subheader("Course Details")
@@ -195,12 +188,21 @@ if st.button("Recommend Courses"):
             ]
         )
 
-        # Footer
         st.markdown(
-            """
-            <div style="position: fixed; bottom: 10px; right: 20px; font-size: 14px; color: green;">
-                    Developed by Meghana
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+    """
+    <style>
+    .footer {
+        position: fixed;
+        bottom: 10px;
+        right: 20px;
+        color: green;
+        font-size: 14px;
+    }
+    </style>
+
+    <div class="footer">
+        Developed by Meghana
+    </div>
+    """,
+    unsafe_allow_html=True
+)
