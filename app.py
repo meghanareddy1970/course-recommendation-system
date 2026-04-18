@@ -17,13 +17,10 @@ st.write("Hybrid recommendation engine using collaborative + content filtering")
 # Trending Courses section
 st.subheader("Trending Courses")
 
-st.dataframe(
-    trending_courses[
-        ["course_name", "difficulty_level", "rating"]
-    ],
-    height=350,
-    use_container_width=True
-)
+trending_courses = df.sort_values(
+    by="enrollment_numbers",
+    ascending=False
+).drop_duplicates("course_name")
 
 st.dataframe(
     trending_courses[
