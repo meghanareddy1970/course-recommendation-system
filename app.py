@@ -69,9 +69,18 @@ st.dataframe(
 # Recommend Similar Courses section
 st.subheader("Course Recommendation Engine")
 
+difficulty_selected = st.selectbox(
+    "Select Difficulty Level",
+    df["difficulty_level"].unique()
+)
+
+filtered_courses = df[
+    df["difficulty_level"] == difficulty_selected
+]
+
 selected_course = st.selectbox(
     "Search and select a course",
-    filtered_courses["course_name"].unique()
+    filtered_courses["course_name"].values
 )
 
 
