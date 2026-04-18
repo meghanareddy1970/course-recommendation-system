@@ -165,39 +165,39 @@ if st.button("Recommend Courses"):
     recommended_courses = recommended_courses.drop_duplicates("course_name")
 
     if recommendation_type == "Similar Courses":
-    st.dataframe(
-        recommended_courses[
-            ["course_name",
-             "difficulty_level",
-             "rating",
-             "course_price",
-             "similarity_score"]
-        ]
-    )
+        st.dataframe(
+             recommended_courses[
+                ["course_name",
+                "difficulty_level",
+                "rating",
+                "course_price",
+                "similarity_score"]
+            ]
+        )
 
-else:
-    st.dataframe(
-        recommended_courses[
-            ["course_name",
-             "difficulty_level",
-             "rating",
-             "course_price"]
-        ]
-    )
+    else:
+        st.dataframe(
+            recommended_courses[
+                ["course_name",
+                "difficulty_level",
+                "rating",
+                "course_price"]
+            ]
+        )
 
 
-st.markdown("""
-<style>
-.footer {
-position: fixed;
-bottom: 10px;
-right: 20px;
-color: green;
-font-size: 14px;
-}
-</style>
+    st.markdown("""
+    <style>
+    .footer {
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    color: green;
+    font-size: 14px;
+    }
+    </style>
 
-<div class="footer">
-Developed by Meghana
-</div>
-""", unsafe_allow_html=True)
+    <div class="footer">
+    Developed by Meghana
+    </div>
+    """, unsafe_allow_html=True)
