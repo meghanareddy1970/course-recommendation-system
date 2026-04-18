@@ -80,7 +80,7 @@ selected_course = st.selectbox(
 # Show course details
 course_info = filtered_courses[
     filtered_courses["course_name"] == selected_course
-].iloc[]
+].iloc[0]
 
 st.subheader("Course Details")
 
