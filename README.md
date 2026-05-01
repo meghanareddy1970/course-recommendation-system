@@ -1,4 +1,4 @@
-# 🎓 Online Course Recommendation System
+# 🎓 Hybrid Online Course Recommendation System
 
 ## 📌 Overview
 
